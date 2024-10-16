@@ -64,6 +64,9 @@ importers:
 
   packages/edit:
     dependencies:
+      '@tailor-cms/cek-common':
+        specifier: ^0.0.3
+        version: 0.0.3
       vue:
         specifier: ^3.3.4
         version: 3.3.4
