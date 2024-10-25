@@ -1,5 +1,5 @@
 <template>
-  <div class="align-center justify-center">
+  <div class="d-flex align-center justify-center">
     <AssetInput
       :extensions="['.mp4']"
       :public-url="element.data.url"

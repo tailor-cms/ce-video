@@ -10,7 +10,6 @@
       active-placeholder="Use toolbar to upload the video"
     />
     <template v-else>
-      <PreviewOverlay :show="!isDisabled && !isFocused" />
       <iframe
         v-if="sharedUrl"
         :src="sharedUrl"
@@ -26,12 +25,9 @@
 </template>
 
 <script lang="ts" setup>
-import {
-  ElementPlaceholder,
-  PreviewOverlay,
-} from '@tailor-cms/core-components';
 import { computed } from 'vue';
 import type { Element } from '@tailor-cms/ce-video-manifest';
+import { ElementPlaceholder } from '@tailor-cms/core-components';
 import manifest from '@tailor-cms/ce-video-manifest';
 
 import { parseUrl } from './utils';
