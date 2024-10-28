@@ -1,5 +1,11 @@
 # @tailor-cms/ce-video-edit
 
+## 0.0.5
+
+### Patch Changes
+
+- Core Components package bumped.
+
 ## 0.0.4
 
 ### Patch Changes
