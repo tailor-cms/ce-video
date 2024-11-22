@@ -47,7 +47,6 @@ const sharedUrl = computed(
 <style lang="scss" scoped>
 .tce-video {
   text-align: left;
-  position: relative;
 
   iframe {
     aspect-ratio: 16/9;

@@ -1,9 +1,9 @@
 {
   "name": "@tailor-cms/ce-video-server",
-  "description": "Tailor CMS video element",
+  "description": "Tailor CMS video server component",
   "author": "Studion <info@gostudion.com> (https://github.com/tailor-cms)",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "exports": {
     ".": {
       "import": "./dist/index.js",
