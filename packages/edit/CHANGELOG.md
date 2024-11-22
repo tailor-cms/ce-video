@@ -1,5 +1,11 @@
 # @tailor-cms/ce-video-edit
 
+## 0.0.6
+
+### Patch Changes
+
+- Cleaned up unused components and exports, reordered package.json files.
+
 ## 0.0.5
 
 ### Patch Changes
