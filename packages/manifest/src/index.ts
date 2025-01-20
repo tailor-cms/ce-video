@@ -5,7 +5,7 @@ import type {
 } from './interfaces';
 
 // Element unique id within the target system (e.g. Tailor)
-export const type = 'CE_VIDEO';
+export const type = 'VIDEO';
 
 // Display name (e.g. shown to the author)
 export const name = 'Video';
