@@ -3,7 +3,7 @@
     <ElementPlaceholder
       v-if="!element.data.url"
       :icon="manifest.ui.icon"
-      :is-disabled="isDisabled"
+      :is-disabled="isReadonly"
       :is-focused="isFocused"
       :name="`${manifest.name} component`"
       active-icon="mdi-arrow-up"
@@ -34,8 +34,9 @@ import { parseUrl } from './utils';
 
 const props = defineProps<{
   element: Element;
+  isDragged: boolean;
   isFocused: boolean;
-  isDisabled: boolean;
+  isReadonly: boolean;
 }>();
 defineEmits(['save']);
 
