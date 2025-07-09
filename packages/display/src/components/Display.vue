@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.url" class="tce-root">
+  <div v-if="data.url" class="tce-video-root">
     <iframe
       v-if="sharedUrl"
       :src="sharedUrl"
@@ -28,10 +28,7 @@ const submit = () => emit('interaction', { id: props.id });
 </script>
 
 <style scoped>
-.tce-root {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-
+.tce-video-root {
   iframe {
     aspect-ratio: 16/9;
   }
