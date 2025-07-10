@@ -35,9 +35,7 @@ const submit = () => emit('interaction', { id: props.element.id });
 </script>
 
 <style scoped>
-.tce-video-root {
-  iframe {
-    aspect-ratio: 16/9;
-  }
+.tce-video-root iframe {
+  aspect-ratio: 16/9;
 }
 </style>
