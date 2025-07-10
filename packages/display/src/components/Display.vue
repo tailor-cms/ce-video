@@ -8,7 +8,8 @@
       title="Video Preview"
     ></iframe>
     <video
-      v-else :src="element.data.url"
+      v-else
+      :src="element.data.url"
       class="d-block w-100"
       controls
       @play="submit"
@@ -27,8 +28,8 @@ import { parseUrl } from './utils';
 const props = defineProps<{ element: Element; userState: any }>();
 const emit = defineEmits(['interaction']);
 
-const sharedUrl = computed(() =>
-  props.element.data.url && parseUrl(props.element.data.url)
+const sharedUrl = computed(
+  () => props.element.data.url && parseUrl(props.element.data.url),
 );
 
 const submit = () => emit('interaction', { id: props.element.id });
