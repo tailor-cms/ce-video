@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data.url" class="tce-root">
+  <div v-if="element.data.url" class="tce-video-root">
     <iframe
       v-if="sharedUrl"
       :src="sharedUrl"
@@ -7,7 +7,13 @@
       frameborder="0"
       title="Video Preview"
     ></iframe>
-    <video v-else :src="data.url" class="d-block w-100" controls @play="submit">
+    <video
+      v-else
+      :src="element.data.url"
+      class="d-block w-100"
+      controls
+      @play="submit"
+    >
       <track kind="captions" />
     </video>
   </div>
@@ -15,25 +21,22 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import type { ElementData } from '@tailor-cms/ce-video-manifest';
+import type { Element } from '@tailor-cms/ce-video-manifest';
 
 import { parseUrl } from './utils';
 
-const props = defineProps<{ id: number; data: ElementData; userState: any }>();
+const props = defineProps<{ element: Element; userState: any }>();
 const emit = defineEmits(['interaction']);
 
-const sharedUrl = computed(() => props.data.url && parseUrl(props.data.url));
+const sharedUrl = computed(
+  () => props.element.data.url && parseUrl(props.element.data.url),
+);
 
-const submit = () => emit('interaction', { id: props.id });
+const submit = () => emit('interaction', { id: props.element.id });
 </script>
 
 <style scoped>
-.tce-root {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-
-  iframe {
-    aspect-ratio: 16/9;
-  }
+.tce-video-root iframe {
+  aspect-ratio: 16/9;
 }
 </style>
