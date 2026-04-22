@@ -20,7 +20,8 @@ Video content element with file upload and embed URL support (YouTube, Vimeo, Go
 
 - Renders the video with native controls
 - Embeds third-party players for supported services
-- Emits `interaction` event on playback
+- Emits `interaction` event with `{ currentTime, furthestTime }` on playback,
+  throttled during playback and debounced on seek
 
 ## Development
 
