@@ -42,7 +42,3 @@ test.describe('YouTube URL', () => {
     await expect(display.iframeEl).toHaveAttribute('src', YOUTUBE_EMBED);
   });
 });
-
-test.afterAll(async () => {
-  await elementClient.reset(ELEMENT_ID);
-});
