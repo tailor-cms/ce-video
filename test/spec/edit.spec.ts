@@ -13,7 +13,6 @@ const VIMEO_EMBED = 'https://player.vimeo.com/video/9011932';
 
 test.beforeEach(async ({ page }) => {
   await elementClient.reset(ELEMENT_ID);
-  await elementClient.resetState(ELEMENT_ID);
   await page.goto(`/?id=${ELEMENT_ID}`);
   await page.waitForLoadState('networkidle');
 });

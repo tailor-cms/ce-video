@@ -10,6 +10,7 @@ const YOUTUBE_EMBED = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
 
 test.beforeEach(async ({ page }) => {
   await elementClient.reset(ELEMENT_ID);
+  await elementClient.resetState(ELEMENT_ID);
   await page.goto(`/?id=${ELEMENT_ID}`);
   await page.waitForLoadState('networkidle');
 });
