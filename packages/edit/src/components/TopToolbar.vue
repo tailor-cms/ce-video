@@ -1,32 +1,37 @@
 <template>
   <div class="d-flex align-center justify-center">
-    <AssetInput
-      :extensions="['.mp4']"
-      :public-url="element.data.url"
-      :url="element.data.assets.url"
+    <TailorFileInput
+      :allowed-extensions="EXTENSIONS"
+      :file-key="element.data.assets?.url"
       class="mx-auto"
-      upload-label="Upload mp4"
-      @input="save"
+      allow-url-source
+      @delete="onDelete"
+      @input="onInput"
+      @upload="onUpload"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, defineProps } from 'vue';
-import { AssetInput } from '@tailor-cms/core-components';
-import { cloneDeep } from 'lodash-es';
-import type { Element } from '@tailor-cms/ce-video-manifest';
+import type { Element, ElementData } from '@tailor-cms/ce-video-manifest';
+
+const EXTENSIONS = ['.mp4', '.webm', '.mov'];
 
 const props = defineProps<{ element: Element }>();
-const emit = defineEmits(['save']);
+const emit = defineEmits<{ save: [data: ElementData] }>();
 
-const save = ({ url, publicUrl }: { url: string; publicUrl: string }) => {
+const onUpload = ({ url, publicUrl }: Record<string, any>) => {
   const assets = { url };
-  const elementData = Object.assign(cloneDeep(props.element.data), {
-    url: publicUrl,
-    assets,
-  });
-  emit('save', elementData);
+  emit('save', { ...props.element.data, url: publicUrl, assets });
+};
+
+const onInput = (payload: Record<string, any> | null) => {
+  if (!payload) return;
+  emit('save', { ...props.element.data, url: payload.publicUrl });
+};
+
+const onDelete = () => {
+  emit('save', { ...props.element.data, url: null, assets: {} });
 };
 </script>
 

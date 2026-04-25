@@ -1,6 +1,6 @@
 <template>
   <div class="tce-video">
-    <ElementPlaceholder
+    <TailorElementPlaceholder
       v-if="!element.data.url"
       :icon="manifest.ui.icon"
       :is-disabled="isReadonly"
@@ -27,7 +27,6 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import type { Element } from '@tailor-cms/ce-video-manifest';
-import { ElementPlaceholder } from '@tailor-cms/core-components';
 import manifest from '@tailor-cms/ce-video-manifest';
 
 import { parseUrl } from './utils';
@@ -38,7 +37,6 @@ const props = defineProps<{
   isFocused: boolean;
   isReadonly: boolean;
 }>();
-defineEmits(['save']);
 
 const sharedUrl = computed(
   () => props.element.data.url && parseUrl(props.element.data.url),
