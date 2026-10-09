@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 import { elementClient } from '@tailor-cms/cek-e2e';
 
 import { Display } from '../pom';
+import { stubEmbeds } from '../fixtures';
 
 const ELEMENT_ID = 'test-video-display';
 const VIDEO_URL = 'https://example.com/video.mp4';
@@ -9,6 +10,7 @@ const YOUTUBE_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
 const YOUTUBE_EMBED = 'https://www.youtube.com/embed/dQw4w9WgXcQ';
 
 test.beforeEach(async ({ page }) => {
+  await stubEmbeds(page);
   await elementClient.reset(ELEMENT_ID);
   await elementClient.resetState(ELEMENT_ID);
   await page.goto(`/?id=${ELEMENT_ID}`);
@@ -37,7 +39,8 @@ test.describe('Direct URL', () => {
 test.describe('YouTube URL', () => {
   test('Renders embed iframe', async ({ page }) => {
     await elementClient.update(ELEMENT_ID, { url: YOUTUBE_URL, assets: {} });
-    await page.reload({ waitUntil: 'networkidle' });
+    // Embed players never let the page go network-idle.
+    await page.reload({ waitUntil: 'load' });
     const display = new Display(page);
     await expect(display.iframeEl).toBeVisible();
     await expect(display.iframeEl).toHaveAttribute('src', YOUTUBE_EMBED);
